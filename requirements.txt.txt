@@ -1,0 +1,5 @@
+Flask
+Flasgger
+mysql-connector-python
+gunicorn
+Werkzeug
