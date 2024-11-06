@@ -7,11 +7,11 @@ def init_db(app):
 def get_db():
     if 'db' not in g:
         g.db = mysql.connector.connect(
-            user=current_app.config['MYSQL_USER'],
-            password=current_app.config['MYSQL_PASSWORD'],
-            host=current_app.config['MYSQL_HOST'],
-            database=current_app.config['MYSQL_DB'],
-            port=current_app.config['MYSQL_PORT']
+            host="mysql_container",  # Debe coincidir con el nombre del contenedor
+            user="user",
+            password="userpassword",
+            database="base_camisetas",
+            port=3306
         )
     return g.db
 
