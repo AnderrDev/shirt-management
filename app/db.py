@@ -7,12 +7,12 @@ def init_db(app):
 def get_db():
     if 'db' not in g:
         g.db = mysql.connector.connect(
-            host="mysql_container",  # Debe coincidir con el nombre del contenedor
+            host="localhost",  # Cambia a localhost si ejecutas Flask localmente
             user="user",
             password="userpassword",
             database="base_camisetas",
             port=3306
-        )
+        )   
     return g.db
 
 def close_db(e=None):
