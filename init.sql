@@ -48,4 +48,5 @@ VALUES ('M', 'Azul', 'Algodón', 19.99);
 
 -- Insertar Clientes
 INSERT INTO cliente (nombre, apellido, correo, rol, usuario, clave)
-VALUES ('Juan', 'Pérez', 'juan.perez@example.com', 'Cliente', 'juan123', 'claveSegura123');
+VALUES ('Juan', 'Pérez', 'juan.perez@example.com', 'Cliente', 'juan123', '$2b$12$EjJdKfJ6IUb.NfI8WQ4UCu0tEXXZyOmK2V1T/LQoDh0AnXxmuLweS'); -- contraseña: claveSegura123
+

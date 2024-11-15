@@ -1,5 +1,11 @@
 from app.db import get_db
 
+def obtener_cliente_por_usuario(usuario):
+    query = "SELECT * FROM cliente WHERE usuario = %s"
+    cursor = get_db().cursor(dictionary=True)
+    cursor.execute(query, (usuario,))
+    return cursor.fetchone()
+
 def obtener_clientes():
     db = get_db()
     cursor = db.cursor(dictionary=True)
