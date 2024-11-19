@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 from flasgger import swag_from
 from app.services.estampas_service import (
     obtener_estampas,
@@ -10,9 +11,10 @@ from app.services.estampas_service import (
 
 bp = Blueprint('estampas', __name__, url_prefix='/estampas')
 
+# Obtener todas las estampas (No requiere token)
 @bp.route('/', methods=['GET'])
 @swag_from({
-    'tags': ['Estampas'],  # Etiqueta para agrupar esta ruta
+    'tags': ['Estampas'],
     'responses': {
         200: {
             'description': 'Lista de todas las estampas',
@@ -26,9 +28,10 @@ def get_estampas():
     estampas = obtener_estampas()
     return jsonify(estampas)
 
+# Obtener una estampa por ID (No requiere token)
 @bp.route('/<int:id>', methods=['GET'])
 @swag_from({
-    'tags': ['Estampas'],  # Etiqueta para agrupar esta ruta
+    'tags': ['Estampas'],
     'parameters': [
         {'name': 'id', 'in': 'path', 'type': 'integer', 'required': True}
     ],
@@ -48,9 +51,12 @@ def get_estampa_por_id(id):
         return jsonify(estampa)
     return jsonify({"error": "Estampa no encontrada"}), 404
 
+# Crear una nueva estampa (Requiere token)
 @bp.route('/', methods=['POST'])
+@jwt_required()
 @swag_from({
-    'tags': ['Estampas'],  # Etiqueta para agrupar esta ruta
+    'tags': ['Estampas'],
+    'security': [{"Bearer": []}],
     'parameters': [
         {'name': 'codigo', 'in': 'formData', 'type': 'string', 'required': True},
         {'name': 'titulo', 'in': 'formData', 'type': 'string', 'required': True},
@@ -67,9 +73,12 @@ def post_estampa():
     insertar_estampa(datos)
     return jsonify({"message": "Estampa creada exitosamente"}), 201
 
+# Actualizar una estampa por ID (Requiere token)
 @bp.route('/<int:id>', methods=['PUT'])
+@jwt_required()
 @swag_from({
-    'tags': ['Estampas'],  # Etiqueta para agrupar esta ruta
+    'tags': ['Estampas'],
+    'security': [{"Bearer": []}],
     'parameters': [
         {'name': 'id', 'in': 'path', 'type': 'integer', 'required': True},
         {'name': 'titulo', 'in': 'formData', 'type': 'string', 'required': True},
@@ -88,9 +97,12 @@ def update_estampa(id):
         return jsonify({"message": "Estampa actualizada exitosamente"}), 200
     return jsonify({"error": "Estampa no encontrada"}), 404
 
+# Eliminar una estampa por ID (Requiere token)
 @bp.route('/<int:id>', methods=['DELETE'])
+@jwt_required()
 @swag_from({
-    'tags': ['Estampas'],  # Etiqueta para agrupar esta ruta
+    'tags': ['Estampas'],
+    'security': [{"Bearer": []}],
     'parameters': [
         {'name': 'id', 'in': 'path', 'type': 'integer', 'required': True}
     ],

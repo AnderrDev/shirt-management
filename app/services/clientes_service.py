@@ -15,13 +15,21 @@ def obtener_clientes():
 def insertar_cliente(datos):
     db = get_db()
     cursor = db.cursor()
-    query = """
-    INSERT INTO cliente (id, nombre, apellido, correo, rol, usuario, clave)
-    VALUES (%s, %s, %s, %s, %s, %s, %s);
+
+    sql = """
+        INSERT INTO cliente (nombre, apellido, correo, rol, usuario, clave)
+        VALUES (%s, %s, %s, %s, %s, %s)
     """
-    valores = (datos['id'], datos['nombre'], datos['apellido'], datos['correo'], datos['rol'], datos['usuario'], datos['clave'])
-    cursor.execute(query, valores)
+    cursor.execute(sql, (
+        datos['nombre'], 
+        datos['apellido'], 
+        datos['correo'], 
+        datos['rol'], 
+        datos['usuario'], 
+        datos['clave']
+    ))
     db.commit()
+    return cursor.lastrowid  # Devuelve el ID generado automáticamente
 
 def eliminar_cliente(id):
     db = get_db()

@@ -40,13 +40,23 @@ CREATE TABLE IF NOT EXISTS cliente (
 
 -- Insertar Estampas
 INSERT INTO estampa (codigo, titulo, color, clasificacion_id, categoria_id)
-VALUES ('E001', 'Estampa Roja', 'Rojo', 1, 1);
+VALUES 
+('E001', 'Estampa Roja', 'Rojo', 1, 1),
+('E002', 'Estampa Azul', 'Azul', 2, 1),
+('E003', 'Estampa Verde', 'Verde', 3, 2),
+('E004', 'Estampa Negra', 'Negro', 1, 3);
 
 -- Insertar Camisetas
 INSERT INTO camiseta (talla, color, material, precio)
-VALUES ('M', 'Azul', 'Algodón', 19.99);
+VALUES 
+('S', 'Blanco', 'Algodón', 15.99),
+('M', 'Negro', 'Poliéster', 18.50),
+('L', 'Rojo', 'Algodón', 20.00),
+('XL', 'Azul', 'Lino', 22.50);
 
 -- Insertar Clientes
 INSERT INTO cliente (nombre, apellido, correo, rol, usuario, clave)
-VALUES ('Juan', 'Pérez', 'juan.perez@example.com', 'Cliente', 'juan123', '$2b$12$EjJdKfJ6IUb.NfI8WQ4UCu0tEXXZyOmK2V1T/LQoDh0AnXxmuLweS'); -- contraseña: claveSegura123
-
+VALUES 
+('Juan', 'Pérez', 'juan.perez@example.com', 'Cliente', 'juan123', 'ClaveSegura'), -- contraseña: claveSegura123
+('Ana', 'García', 'ana.garcia@example.com', 'Cliente', 'ana456', 'ClaveSegura'), -- contraseña: claveSegura123
+('Luis', 'Martínez', 'luis.martinez@example.com', 'Administrador', 'admin789', 'ClaveSegura'); -- contraseña: claveSegura123
