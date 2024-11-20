@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Instalar las dependencias del proyecto
-RUN pip install --no-cache-dir -r requirements.txt.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Exponer el puerto de Flask
 EXPOSE 5000
