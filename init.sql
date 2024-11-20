@@ -57,6 +57,6 @@ VALUES
 -- Insertar Clientes
 INSERT INTO cliente (nombre, apellido, correo, rol, usuario, clave)
 VALUES 
-('Juan', 'Pérez', 'juan.perez@example.com', 'Cliente', 'juan123', 'ClaveSegura'), -- contraseña: claveSegura123
-('Ana', 'García', 'ana.garcia@example.com', 'Cliente', 'ana456', 'ClaveSegura'), -- contraseña: claveSegura123
-('Luis', 'Martínez', 'luis.martinez@example.com', 'Administrador', 'admin789', 'ClaveSegura'); -- contraseña: claveSegura123
+('Juan', 'Perez', 'juan.perez@example.com', 'Cliente', 'juan123', 'ClaveSegura'), -- contraseña: claveSegura123
+('Ana', 'Garcia', 'ana.garcia@example.com', 'Cliente', 'ana456', 'ClaveSegura'), -- contraseña: claveSegura123
+('Luis', 'Martinez', 'luis.martinez@example.com', 'Administrador', 'admin789', 'ClaveSegura'); -- contraseña: claveSegura123

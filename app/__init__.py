@@ -6,11 +6,14 @@ from app.db import init_db
 from app.utils.error_handlers import register_error_handlers
 from app.routes import estampas_bp, camisetas_bp, clientes_bp
 from app.routes.main import bp as main_bp  # Importar el nuevo blueprint
+from flask_cors import CORS
 
 def create_app():
     # Inicialización de la aplicación Flask
     app = Flask(__name__)
-    
+    # Habilitar CORS para todas las rutas
+    CORS(app)
+
     # Configuración de la aplicación
     app.config['DEBUG'] = True
     app.config.from_object('app.config.Config')

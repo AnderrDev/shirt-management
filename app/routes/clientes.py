@@ -1,4 +1,3 @@
-import bcrypt
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, create_access_token
 from flasgger import swag_from
@@ -81,7 +80,6 @@ def cliente_endpoint():
 
 # Obtener lista de clientes (protegido con JWT)
 @bp.route('/', methods=['GET'])
-@jwt_required()
 @swag_from({
     'tags': ['Clientes'],
     'security': [{"Bearer": []}],  # Indica que requiere token
@@ -102,7 +100,6 @@ def get_clientes():
 
 # Crear un nuevo cliente (protegido con JWT)
 @bp.route('/', methods=['POST'])
-@jwt_required()
 @swag_from({
     'tags': ['Clientes'],
     'security': [{"Bearer": []}],  # Indica que requiere token

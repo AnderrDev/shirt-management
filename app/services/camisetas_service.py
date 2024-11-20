@@ -10,10 +10,10 @@ def insertar_camiseta(datos):
     db = get_db()
     cursor = db.cursor()
     query = """
-    INSERT INTO camiseta (id, talla, color, material, precio)
-    VALUES (%s, %s, %s, %s, %s);
+    INSERT INTO camiseta (talla, color, material, precio)
+    VALUES (%s, %s, %s, %s);
     """
-    valores = (datos['id'], datos['talla'], datos['color'], datos['material'], datos['precio'])
+    valores = (datos['talla'], datos['color'], datos['material'], datos['precio'])
     cursor.execute(query, valores)
     db.commit()
 
