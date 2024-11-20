@@ -7,7 +7,7 @@ def init_db(app):
 def get_db():
     if 'db' not in g:
         g.db = mysql.connector.connect(
-            host="localhost",  # Cambia a localhost si ejecutas Flask localmente
+            host="mysql_container",  # Cambia a localhost si ejecutas Flask localmente
             user="user",
             password="userpassword",
             database="base_camisetas",
